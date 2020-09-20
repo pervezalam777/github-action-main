@@ -7,8 +7,6 @@ name: CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,13 +19,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
+      - name: 'list repo'
+        run: ls -R
       # Runs a set of commands using the runners shell
-      - name: directory 
+      - name: create directory and change to directory
         run: |
           mkdir -p test-repo and
           cd test-repo
@@ -35,6 +30,15 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: pervezalam777/webhook-connect-one
-      - name: list files
-        run: ls -l
+      - name: create an branch
+        run: git checkout -b translation
+      - name: come back to root
+        run: cd ..
+      - name: copy file
+        uses: canastro/copy-file-action@master
+        with:
+          source: public
+          target: webhook-connect-one/public
+      - name: list
+        run: ls -R
           
