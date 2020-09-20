@@ -33,9 +33,9 @@ jobs:
       - name: create an branch
         run: git checkout -b translation 
       - name: come back to root
-        run: cd ..
+        run: cd .. & ls -l
       - name: copy file
-        run: cp -r /public /webhook-connect-one/public
+        run: cp -r ./public ./webhook-connect-one/public
       - name: list
         run: ls -R
           
