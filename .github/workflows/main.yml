@@ -31,14 +31,11 @@ jobs:
         with:
           repository: pervezalam777/webhook-connect-one
       - name: create an branch
-        run: git checkout -b translation
+        run: git checkout -b translation 
       - name: come back to root
         run: cd ..
       - name: copy file
-        uses: canastro/copy-file-action@master
-        with:
-          source: public
-          target: webhook-connect-one/public
+        run: cp -r /public /webhook-connect-one/public
       - name: list
         run: ls -R
           
