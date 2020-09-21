@@ -29,7 +29,7 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
-          /usr/bin/git checkout origin/master
+          /usr/bin/git checkout master
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
@@ -40,6 +40,10 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: '[Test] Update translation'
-          base: master
           branch: translation
+          draft: false
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
 
