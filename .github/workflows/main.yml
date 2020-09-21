@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: geertvdc/setup-hub@master
+      # - uses: geertvdc/setup-hub@master
       - name: main repo
         run: |
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
@@ -30,16 +30,22 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
-      
-      - name: Create Pull Request
-        env:
-          GITHUB_USER: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          pwd
-          cd webhook-connect-one
-          pwd
-          hub pull-request -b master -m "translation"  
+      - name: pull-request
+        run: cd webhook-connect-one 
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: ""
+          destination_branch: "master"
+          github_token: ${{ secrets.GITHUB_TOKEN }} 
+      # - name: Create Pull Request
+      #   env:
+      #     GITHUB_USER: ${{ github.actor }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     pwd
+      #     cd webhook-connect-one
+      #     pwd
+      #     hub pull-request -b master -m "translation"  
 
       # - name: Create Pull Request
       #   id: cpr
