@@ -20,14 +20,14 @@ jobs:
           /usr/bin/git config --global user.name  "pervezalam777"
           /usr/bin/git checkout -b translation 
           cd ..
-          pwd
           ls -l
           cat ./github-action-main/public/locales/en_in/translation.json
+          ls -l
+          cat ./webhook-connect-one/public/locales/en_in/translation.json
           cp -r ./github-action-main/public ./webhook-connect-one/public
-          cat ./github-action-main/public/locales/en_in/translation.json
           cd webhook-connect-one
-          pwd
           ls -R
+          cat ./webhook-connect-one/public/locales/en_in/translation.json
     #      /usr/bin/git add .
     #      /usr/bin/git commit -m "translations added"
     #      /usr/bin/git push --set-upstream origin translation
