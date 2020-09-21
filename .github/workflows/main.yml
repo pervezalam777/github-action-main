@@ -28,15 +28,15 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.API_TOKEN_GITHUB }}
-          path: ./webhook-connect-one
-          commit-message: Update translation
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          title: '[Test] Update translation'
-          base: master
-          branch: translation
+    #  - name: Create Pull Request
+    #    id: cpr
+    #    uses: peter-evans/create-pull-request@v3
+    #    with:
+    #      token: ${{ secrets.API_TOKEN_GITHUB }}
+    #      path: ./webhook-connect-one
+    #      commit-message: Update translation
+    #      committer: GitHub <noreply@github.com>
+    #      author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+    #      title: '[Test] Update translation'
+    #      base: master
+    #      branch: translation
