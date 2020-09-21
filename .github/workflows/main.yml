@@ -7,13 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # - uses: geertvdc/setup-hub@master
-      - name: main repo
+      - name: source repo
         run: |
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-      - name: list repo'
-        run: ls -R
-      - name: clone another repo
+      - name: destination repo one
         run: |      
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.API_TOKEN_GITHUB }}@github.com/$GITHUB_ACTOR/webhook-connect-one.git"
           cd webhook-connect-one
@@ -21,39 +18,8 @@ jobs:
           /usr/bin/git config --global user.name  "action bot"
           /usr/bin/git checkout -b translation
           cd ..
-          ls -l
-          cat ./github-action-main/public/locales/en_in/translation.json
           cp -r ./github-action-main/public ./webhook-connect-one
           cd webhook-connect-one
-          ls -R
-          cat ./public/locales/en_in/translation.json
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
-      # - name: Create Pull Request
-      #   env:
-      #     GITHUB_USER: ${{ github.actor }}
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: |
-      #     pwd
-      #     cd webhook-connect-one
-      #     pwd
-      #     hub pull-request -b master -m "translation"  
-
-      # - name: Create Pull Request
-      #   id: cpr
-      #   uses: peter-evans/create-pull-request@v3
-      #   with:
-      #     token: ${{ secrets.API_TOKEN_GITHUB }}
-      #     path: ./webhook-connect-one
-      #     commit-message: Update translation
-      #     committer: GitHub <noreply@github.com>
-      #     author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-      #     title: '[Test] Update translation'
-      #     branch: translation
-      #     draft: false
-      # - name: Check outputs
-      #   run: |
-      #     echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-      #     echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
-
