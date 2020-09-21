@@ -19,6 +19,10 @@ jobs:
         with:
           repository: pervezalam777/webhook-connect-one
           path: webhook-connect-one
+      - name: create translation branch
+        run: |
+          cd webhook-connect-one
+          /usr/bin/git checkout -b translation
       - name: list
         run: ls -R
           
