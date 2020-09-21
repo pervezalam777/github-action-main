@@ -10,7 +10,6 @@ jobs:
       - name: main repo
         run: |
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-          cat ./github-action-main/public/locales/en_in/translation.json
       - name: list repo'
         run: ls -R
       - name: clone another repo
@@ -26,9 +25,10 @@ jobs:
           cat ./github-action-main/public/locales/en_in/translation.json
           cp -r ./github-action-main/public ./webhook-connect-one/public
           cat ./github-action-main/public/locales/en_in/translation.json
-          cat ./webhook-connect-one/public/locales/en_in/translation.json
+    #     cat ./webhook-connect-one/public/locales/en_in/translation.json
           cd webhook-connect-one
           pwd
+          ls -R
     #      /usr/bin/git add .
     #      /usr/bin/git commit -m "translations added"
     #      /usr/bin/git push --set-upstream origin translation
