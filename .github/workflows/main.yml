@@ -30,13 +30,6 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
-      - name: pull-request
-        run: cd webhook-connect-one 
-        uses: repo-sync/pull-request@v2
-        with:
-          source_branch: ""
-          destination_branch: "master"
-          github_token: ${{ secrets.GITHUB_TOKEN }} 
       # - name: Create Pull Request
       #   env:
       #     GITHUB_USER: ${{ github.actor }}
