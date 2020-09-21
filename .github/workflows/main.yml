@@ -3,9 +3,6 @@ name: CI
 on:
   push:
     branches: [ master ]
-env: 
-  TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,7 +14,7 @@ jobs:
         run: ls -R
       - name: clone another repo
         run: |      
-          /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_ACTOR/webhook-connect-one.git"
+          /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.API_TOKEN_GITHUB }}@github.com/$GITHUB_ACTOR/webhook-connect-one.git"
           cd webhook-connect-one
           /usr/bin/git config --global user.email "pervezalam777@gmail.com"
           /usr/bin/git config --global user.name  "pervezalam777"
@@ -28,7 +25,6 @@ jobs:
           pwd
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
-          /usr/bin/git branch --set-upstream-to=origin/translation
-          /usr/bin/git push
+          /usr/bin/git push --set-upstream origin translation
       - name: list
         run: ls -R
