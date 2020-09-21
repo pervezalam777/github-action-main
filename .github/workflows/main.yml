@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: main repo
         run: |
-          mkdir $GITHUB_REPOSITORY
-          cd $GITHUB_REPOSITORY
+          mkdir github-action-main
+          cd github-action-main
           /usr/bin/git init
           /usr/bin/git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           /usr/bin/git pull
