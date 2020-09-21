@@ -25,7 +25,7 @@ jobs:
           cp -r ./github-action-main/public ./webhook-connect-one/public
           cd webhook-connect-one
           ls -R
-          cat ./webhook-connect-one/public/locales/en_in/translation.json
+          cat ./public/locales/en_in/translation.json
     #      /usr/bin/git add .
     #      /usr/bin/git commit -m "translations added"
     #      /usr/bin/git push --set-upstream origin translation
