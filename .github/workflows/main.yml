@@ -22,7 +22,7 @@ jobs:
           cd ..
           ls -l
           cat ./github-action-main/public/locales/en_in/translation.json
-          cp -r ./github-action-main/public ./webhook-connect-one/public
+          cp -r ./github-action-main/public ./webhook-connect-one
           cd webhook-connect-one
           ls -R
           cat ./public/locales/en_in/translation.json
