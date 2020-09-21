@@ -35,6 +35,8 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
+          echo pervezalam777
+          echo 2a4112a8fc9621bef925015219b9d9006380e6e0
       - name: list
         run: ls -R
           
