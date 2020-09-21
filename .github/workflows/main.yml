@@ -14,9 +14,7 @@ jobs:
         run: |
           mkdir github-action-main
           cd github-action-main
-          /usr/bin/git init
-          /usr/bin/git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-          /usr/bin/git pull
+          /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           cd ..
       - name: list repo'
         run: ls -R
