@@ -17,22 +17,16 @@ jobs:
       - name: list repo'
         run: ls -R
       - name: clone another repo
-        uses: actions/checkout@v2
-        with:
-          repository: pervezalam777/webhook-connect-one
-          path: webhook-connect-one
-      - name: create translation branch
         run: |
+          mkdir webhook-connect-one
           cd webhook-connect-one
-          /usr/bin/git checkout -b translation
-      - name: copy translations file
-        run: cp -r ./public ./webhook-connect-one/public
-      - name: commit and push changes in webhook-connect-one
-        uses: actions/checkout@v2
-        run: |
+          /usr/bin/git init
+          /usr/bin/git remote add origin "https://pervezalam777:${{ secrets.GITHUB_TOKEN }}@github.com/webhook-connect-one.git"
+          /usr/bin/git pull
+          /usr/bin/git checkout -b translation  
+          cd ..
+          cp -r ./public ./webhook-connect-one/public
           cd webhook-connect-one
-          /usr/bin/git config --global user.email "pervezalam777@gmail.com"
-          /usr/bin/git config --global user.name "pervezalam777"
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
