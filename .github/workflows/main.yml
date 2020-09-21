@@ -32,7 +32,7 @@ jobs:
           /usr/bin/git config --global user.name "pervezalam777"
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
-          /usr/bin/git push
+          /usr/bin/git push --set-upstream origin translation
       - name: list
         run: ls -R
           
