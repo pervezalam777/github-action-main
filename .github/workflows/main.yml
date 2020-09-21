@@ -30,14 +30,17 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
+      
       - name: Create Pull Request
         env:
+          GITHUB_USER: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pwd
           cd webhook-connect-one
           pwd
           hub pull-request -b master -m "translation"  
+
       # - name: Create Pull Request
       #   id: cpr
       #   uses: peter-evans/create-pull-request@v3
