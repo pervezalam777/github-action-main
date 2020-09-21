@@ -16,8 +16,8 @@ jobs:
         run: |      
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.API_TOKEN_GITHUB }}@github.com/$GITHUB_ACTOR/webhook-connect-one.git"
           cd webhook-connect-one
-          /usr/bin/git config --global user.email "pervezalam777@gmail.com"
-          /usr/bin/git config --global user.name  "pervezalam777"
+          /usr/bin/git config --global user.email "action.bot@github.com"
+          /usr/bin/git config --global user.name  "action bot"
           /usr/bin/git checkout -b translation
           cd ..
           ls -l
@@ -29,15 +29,16 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
-    #  - name: Create Pull Request
-    #    id: cpr
-    #    uses: peter-evans/create-pull-request@v3
-    #    with:
-    #      token: ${{ secrets.API_TOKEN_GITHUB }}
-    #      path: ./webhook-connect-one
-    #      commit-message: Update translation
-    #      committer: GitHub <noreply@github.com>
-    #      author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-    #      title: '[Test] Update translation'
-    #      base: master
-    #      branch: translation
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          path: ./webhook-connect-one
+          commit-message: Update translation
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: '[Test] Update translation'
+          base: master
+          branch: translation
+
