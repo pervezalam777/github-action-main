@@ -19,6 +19,8 @@ jobs:
         run: |      
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_ACTOR/webhook-connect-one.git"
           cd webhook-connect-one
+          /usr/bin/git config --global user.email pervezalam777@gmail.com
+          /usr/bin/git config --global user.name $GITHUB_ACTOR
           /usr/bin/git checkout -b translation 
           cd ..
           cp -r ./github-action-main/public ./webhook-connect-one/public
