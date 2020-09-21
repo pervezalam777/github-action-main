@@ -7,6 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: geertvdc/setup-hub@master
       - name: main repo
         run: |
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
@@ -29,21 +30,24 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
-          /usr/bin/git checkout master
       - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.API_TOKEN_GITHUB }}
-          path: ./webhook-connect-one
-          commit-message: Update translation
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          title: '[Test] Update translation'
-          branch: translation
-          draft: false
-      - name: Check outputs
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: hub pull-request -b master -m "translation"  
+      # - name: Create Pull Request
+      #   id: cpr
+      #   uses: peter-evans/create-pull-request@v3
+      #   with:
+      #     token: ${{ secrets.API_TOKEN_GITHUB }}
+      #     path: ./webhook-connect-one
+      #     commit-message: Update translation
+      #     committer: GitHub <noreply@github.com>
+      #     author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+      #     title: '[Test] Update translation'
+      #     branch: translation
+      #     draft: false
+      # - name: Check outputs
+      #   run: |
+      #     echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+      #     echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
 
