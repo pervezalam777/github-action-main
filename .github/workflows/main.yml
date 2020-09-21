@@ -27,7 +27,7 @@ jobs:
         run: cp -r ./public ./webhook-connect-one/public
       - name: commit and push changes in webhook-connect-one
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          GITHUB_TOKEN: ${{ secrets.BASH_SCRIPT_TOKEN }}  
         run: |
           cd webhook-connect-one
           /usr/bin/git config --global user.email "pervezalam777@gmail.com"
