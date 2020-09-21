@@ -19,14 +19,16 @@ jobs:
         run: |      
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_ACTOR/webhook-connect-one.git"
           cd webhook-connect-one
-          /usr/bin/git config --global user.email pervezalam777@gmail.com
-          /usr/bin/git config --global user.name $GITHUB_ACTOR
+          /usr/bin/git config --global user.email "pervezalam777@gmail.com"
+          /usr/bin/git config --global user.name  "pervezalam777"
           /usr/bin/git checkout -b translation 
           cd ..
           cp -r ./github-action-main/public ./webhook-connect-one/public
           cd webhook-connect-one
+          pwd
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
-          /usr/bin/git push --set-upstream origin translation
+          /usr/bin/git branch --set-upstream-to=origin/translation
+          /usr/bin/git push
       - name: list
         run: ls -R
