@@ -28,6 +28,8 @@ jobs:
       - name: commit and push changes in webhook-connect-one
         run: |
           cd webhook-connect-one
+          /usr/bin/git config --global user.email "pervezalam777@gmail.com"
+          /usr/bin/git config --global user.name "pervezalam777"
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push
