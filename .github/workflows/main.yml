@@ -25,7 +25,6 @@ jobs:
           cat ./github-action-main/public/locales/en_in/translation.json
           cp -r ./github-action-main/public ./webhook-connect-one/public
           cat ./github-action-main/public/locales/en_in/translation.json
-    #     cat ./webhook-connect-one/public/locales/en_in/translation.json
           cd webhook-connect-one
           pwd
           ls -R
