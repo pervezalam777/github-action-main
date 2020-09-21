@@ -1,4 +1,5 @@
 name: CI
+
 on:
   push:
     branches: [ master ]
@@ -8,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: main repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
           repository: ''
       - name: list repo'
