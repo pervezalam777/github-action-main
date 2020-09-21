@@ -11,9 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: main repo
-        uses: actions/checkout@v2
-        with:
-          repository: ''
+        run: |
+          mkdir $GITHUB_REPOSITORY
+          cd $GITHUB_REPOSITORY
+          /usr/bin/git init
+          /usr/bin/git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+          /usr/bin/git pull
+          cd ..
       - name: list repo'
         run: ls -R
       - name: clone another repo
@@ -21,11 +25,11 @@ jobs:
           mkdir webhook-connect-one
           cd webhook-connect-one
           /usr/bin/git init
-          /usr/bin/git remote add origin "https://pervezalam777:${{ secrets.GITHUB_TOKEN }}@github.com/webhook-connect-one.git"
+          /usr/bin/git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/webhook-connect-one.git"
           /usr/bin/git pull
           /usr/bin/git checkout -b translation  
           cd ..
-          cp -r ./public ./webhook-connect-one/public
+          cp -r ./$GITHUB_REPOSITORY/public ./webhook-connect-one/public
           cd webhook-connect-one
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"

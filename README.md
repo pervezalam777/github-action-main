@@ -1,6 +1,10 @@
 # github-action-main
 
 ```yml
+      - name: main repo
+        uses: actions/checkout@v2
+        with:
+          repository: ''
       - name: clone another repo
         uses: actions/checkout@v2
         with:
