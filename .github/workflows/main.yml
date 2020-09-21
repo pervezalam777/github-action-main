@@ -27,7 +27,7 @@ jobs:
         run: cp -r ./public ./webhook-connect-one/public
       - name: commit and push changes in webhook-connect-one
         env:
-          GITHUB_TOKEN: ${{ secrets.BASH_SCRIPT_TOKEN }}  
+          GITHUB_TOKEN: ${{ secrets.SCRIPT_TOKEN }}  
         run: |
           cd webhook-connect-one
           /usr/bin/git config --global user.email "pervezalam777@gmail.com"
@@ -35,8 +35,6 @@ jobs:
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
-          echo pervezalam777
-          echo 2a4112a8fc9621bef925015219b9d9006380e6e0
       - name: list
         run: ls -R
           
