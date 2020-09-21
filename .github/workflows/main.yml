@@ -12,26 +12,19 @@ jobs:
     steps:
       - name: main repo
         run: |
-          mkdir github-action-main
-          cd github-action-main
           /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-          cd ..
       - name: list repo'
         run: ls -R
       - name: clone another repo
-        run: |
-          mkdir webhook-connect-one
+        run: |      
+          /usr/bin/git clone "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_ACTOR/webhook-connect-one.git"
           cd webhook-connect-one
-          /usr/bin/git init
-          /usr/bin/git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/webhook-connect-one.git"
-          /usr/bin/git pull
-          /usr/bin/git checkout -b translation  
+          /usr/bin/git checkout -b translation 
           cd ..
-          cp -r ./$GITHUB_REPOSITORY/public ./webhook-connect-one/public
+          cp -r ./github-action-main/public ./webhook-connect-one/public
           cd webhook-connect-one
           /usr/bin/git add .
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
       - name: list
         run: ls -R
-          
