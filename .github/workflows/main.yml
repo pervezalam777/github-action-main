@@ -34,7 +34,7 @@ jobs:
           /usr/bin/git commit -m "translations added"
           /usr/bin/git push --set-upstream origin translation
         with: 
-          repo-token: ${{ secrets.BASH_SCRIPT_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: list
         run: ls -R
           
