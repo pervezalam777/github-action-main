@@ -18,7 +18,7 @@ jobs:
           cd webhook-connect-one
           /usr/bin/git config --global user.email "pervezalam777@gmail.com"
           /usr/bin/git config --global user.name  "pervezalam777"
-          /usr/bin/git checkout -b translation 
+          /usr/bin/git checkout -b translation
           cd ..
           ls -l
           cat ./github-action-main/public/locales/en_in/translation.json
@@ -26,9 +26,9 @@ jobs:
           cd webhook-connect-one
           ls -R
           cat ./public/locales/en_in/translation.json
-    #      /usr/bin/git add .
-    #      /usr/bin/git commit -m "translations added"
-    #      /usr/bin/git push --set-upstream origin translation
+          /usr/bin/git add .
+          /usr/bin/git commit -m "translations added"
+          /usr/bin/git push --set-upstream origin translation
     #  - name: Create Pull Request
     #    id: cpr
     #    uses: peter-evans/create-pull-request@v3
